@@ -1,0 +1,148 @@
+body{
+    margin: 0px;
+}
+h1{
+    margin-top: 0;
+}
+.navigationBar{   
+    height: 120px;
+    width: 100%;
+    background-color: #161616;
+    
+    text-align: center;
+    position: sticky;
+    top: 0;
+   z-index: 999;
+}
+.navigationBar a{
+    color: white;
+    font-size: 1.4rem;
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+    position: relative;
+    top: 40%;
+   
+}
+.navigationBar a:hover{
+    color: red; 
+    transition: all 300ms ease-in-out;
+}
+.Restaraunt_logo{
+    height: 100%;
+    width: 150px;
+    position: absolute;
+    top: 0px;
+}
+.welcome_container{
+    color: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(Images/welcomeImage.png);
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: 100%;
+    height: 600px;
+    width: 100%;
+    
+}
+.welcome_text{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
+.menu_container{
+    text-align: center;
+    height: 600px;
+    width: 100%;
+    background-color: rgba(246, 221, 191, 0.608);
+    /* Your outer div must be position: relative if you intend on putting other div's inside. */
+    /* Parent div is relative, and child div is absolute. */
+    position: relative;
+    
+}
+.h1_style1{
+    
+    font-size: 2.5rem;
+}
+.taco_card{
+    margin-left: 13%;
+    height: 450px;
+    width: 325px;
+    background-color: black;
+    position: absolute;
+    float: left;
+    
+}
+.taco_card_2{
+    height: 450px;
+    width: 325px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.taco_card_3{
+    height: 450px;
+    width: 325px;
+    position: relative;
+    float: right;
+    margin-right: 13%;
+}
+.caption{
+    width: 100%;
+    height: 100%;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: 0.6s;
+}
+.caption:hover{
+    opacity: 1;
+}
+.caption_text{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+.caption_text button{
+    background-color: red;
+    font-size: 1.1rem;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 1rem;
+    border: solid black 2px;
+    cursor: pointer;
+}
+.special_deals_container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    
+    height: 700px;
+    width: 100%;
+    background-color: bisque;
+} 
+.special_deals_container div{
+    height: 400px;
+    width: 400px;
+    background-color: aqua;
+    margin: 50px;
+    text-align: center;
+}
+/*  background-color: black;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);*/
