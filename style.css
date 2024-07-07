@@ -200,7 +200,7 @@ header .shopping span{
     flex-direction: row;
 }
 .card{
-    height: 250px;
+    height: 350px;
     width: 250px;
     background-color: yellow;
     margin: 10px;
@@ -210,9 +210,19 @@ header .shopping span{
     flex-direction: row;
 }
 .mex_plate_card{
-    height: 250px;
+    height: 350px;
     width: 250px;
     background-color: aqua;
+    margin: 10px;
+}
+.special_deal_card_container{
+    display: flex;
+    flex-direction: row;
+}
+.special_deal_card{
+    height: 250px;
+    width: 250px;
+    background-color: purple;
     margin: 10px;
 }
 /*  background-color: black;
