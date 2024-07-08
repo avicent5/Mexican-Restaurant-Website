@@ -6,7 +6,7 @@
     <title>Order Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #E3E7E8;">
+<body style="background-color: #fff;">
     <div class="ordering_page_container">
         <header>
             <h1>Place an order</h1>
@@ -15,6 +15,13 @@
                 <span class="quantity">0</span>
             </div>
         </header>
+        <div class="shopping_cart_container">
+            <h1>Your Cart</h1>
+            <div class="checkout">
+                <div class="order"> <p>Place Order</p></div>
+                <div class="close_shopping"><p>Close Cart</p></div>
+            </div>
+        </div>
         <div class="taco_menu_container">
             <h1>Tacos</h1>
             <!--edit class name to represent taco cards-->
@@ -26,7 +33,7 @@
         width: 100%;">
         <h1 style="text-align: center;">Steak Taco</h1>
         <p style="text-align: center;">Price $1.99</p>
-        <button>Add to cart</button>
+        <button class="order_page_button">Add to Cart</button>
            </div>
       </div>
     </div>

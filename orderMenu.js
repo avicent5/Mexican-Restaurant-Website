@@ -1,3 +1,4 @@
+
 //cardContent array is for Taco menu section
 const myImage = new Image(); 
 myImage.src = 'Images/taco_image1.png'; 
@@ -8,7 +9,8 @@ const cardContent = [
         style="height: 50%;
         width: 100%;">`,
         heading : '<h1 style="text-align: center;">Chicken Taco </h1>',
-        body : '<p style="text-align: center;">Price: $1.99 </p>'
+        body : '<p style="text-align: center;">Price: $1.99 </p>',
+        button : ` <button class="order_page_button">Add to cart</button>`
     },
     {
         picture : `<img src="TacoImages/alPastorTacoOrderPage.png" 
@@ -17,7 +19,7 @@ const cardContent = [
         width: 100%;">`,
         heading : '<h1 style="text-align: center;">Al Pastor Taco </h1>',
         body : '<p style="text-align: center;">Price: $1.99 </p>',
-        button : `<button>Add to cart</button>`
+        button : ` <button class="order_page_button">Add to cart</button>`
     },
     {
         picture : `<img src="TacoImages/beefTacoOrderPage.png" 
@@ -25,7 +27,8 @@ const cardContent = [
         style="height: 50%;
         width: 100%;">`,
         heading : '<h1 style="text-align: center;">Beef Taco </h1>',
-        body : '<p style="text-align: center;">Price: $1.99 </p>'
+        body : '<p style="text-align: center;">Price: $1.99 </p>',
+        button : ` <button class="order_page_button">Add to cart</button>`
     },
 ]
 const mexPlateCardContent = [
@@ -61,10 +64,33 @@ const displayContainerMethod = (cardArray, cardClass, cardData, cardContainer) =
         newCard.classList.add(cardClass);
         newCard.innerHTML =   `${postCardData.picture} ${postCardData.heading} ${postCardData.body} ${postCardData.button}`;
         cardContainer.appendChild(newCard);
+        newCard.addEventListener('click', () => {
+            body.classList.add('active');
+           
+        })
     } )
 }
 displayContainerMethod(cardContent,'card',newCardData, newCardContainer);
 displayContainerMethod(mexPlateCardContent,'mex_plate_card', mexPlateCardData, mexPlateCardContainer);
 
+let addToCart = () =>{
+   
+}
 
+let openShoppingCart = document.querySelector('.shopping');
+let closeShoppingCart = document.querySelector('.close_shopping');
+let body = document.querySelector('body');
+let addItemToCart = document.querySelector('.order_page_button');
 
+addItemToCart.addEventListener('click', () => {
+    body.classList.add('active');
+   
+})
+
+openShoppingCart.addEventListener('click', () =>{
+    body.classList.add('active');
+})
+closeShoppingCart.addEventListener('click', () => {
+    body.classList.remove('active');
+})
+// mimic this, when it clicks, use function to add inner.html pic and taco type
