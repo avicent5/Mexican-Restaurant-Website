@@ -25,7 +25,8 @@ const cardContent = [
         width: 100%;">`,
         heading : '<h1 style="text-align: center;">Chicken Taco </h1>',
         body : '<p style="text-align: center;">Price: $1.99 </p>',
-        button : ` <button class="order_page_button">Add to cart</button>`
+        button : ` <button class="order_page_button">Add to cart</button>`,
+        text : 'Work?'
         
     },
     {
@@ -77,21 +78,23 @@ const specialDealCardContainer = document.querySelector('.special_deal_menu_cont
 let mexPlateCardData = `<h1>This is box </h1>
 <p>content</p>`;
 // set counter id and match with switch (use id for switch param)
-const displayContainerMethod = (cardArray, cardClass, cardData, cardContainer) => {
+const displayContainerMethod = (cardArray, cardClass, cardDID, cardContainer) => {
     cardArray.map( (postCardData) => {
         const newCard = document.createElement("div");
         newCard.classList.add(cardClass);
-        newCard.innerHTML =   `${postCardData.picture} ${postCardData.heading} ${postCardData.body} ${postCardData.button}`;
+        newCard.innerHTML =   `${postCardData.picture} ${postCardData.heading} ${postCardData.body} ${postCardData.button} <p style="text-align: center;"> ${postCardData.text} </p>'`;
         cardContainer.appendChild(newCard);
-        newCard.addEventListener('click', addToCart);
+       //newCard.addEventListener('click', addToCart(cardDID));
         // use .remove to get rid of div thats created from event listener above
     } )
+
 }
-displayContainerMethod(cardContent,'card',newCardData, newCardContainer);
-displayContainerMethod(mexPlateCardContent,'mex_plate_card', mexPlateCardData, mexPlateCardContainer);
+displayContainerMethod(cardContent,'card',1, newCardContainer);
+displayContainerMethod(mexPlateCardContent,'mex_plate_card', 2, mexPlateCardContainer);
+
 
 // add paramater to get picture and add other contents to it
-let addToCart = () =>{
+let addToCartDiv = (id) =>{
     // might need to create a container div to scroll between lots of items
    let div = document.createElement("div");
    let divImage = document.createElement("img");
@@ -106,15 +109,37 @@ let addToCart = () =>{
    divImage.style.width = "50px"
    
    div.style.color = "white";
-   div.innerHTML = `   <img src="Images/mexican_plate1.png" 
-   alt="Special Deal 1"
-   style="height: 125px;
-   width: 125px;">`;
+   switch(id){
+    case 1:
+         div.innerHTML = `   <img src="Images/mexican_plate1.png" 
+    alt="Special Deal 1"
+    style="height: 125px;
+    width: 125px;">`;
+    break;
+    case 2:
+         div.innerHTML = `   <img src="Images/mexicanPlate3.png" 
+    alt="Special Deal 1"
+    style="height: 125px;
+    width: 125px;">`;
+    break;
+   }
+   
    document.querySelector('.item').appendChild(div);
    itemCounter++;
    document.querySelector('.quantity').innerHTML = itemCounter;
 
 }
 // add eventListener here...
-addItemToCart.addEventListener('click', addToCart);
+addItemToCart.addEventListener('click', addToCartDiv);
+// take in array
+let addToCart = (arr) => {
+    for(let i = 0; i < arr.length; i++){
+    
+    }
+}
 
+// possible solution
+/*
+create an matching id and set it to the switch case, if they match then hardcode innerHTML to desired contents
+*/
+// create an array of your desiered contents and hardcode into the scroll div 
