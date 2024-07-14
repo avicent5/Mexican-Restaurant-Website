@@ -196,6 +196,14 @@ header .shopping span{
     left: 80%;
     padding: 3px 10px;
 }
+.scroll_div{
+    height: 700px;
+    width: 450px;
+    background-color: #e8bc08;
+    margin: auto;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 .shopping_cart_container{
     position: fixed;
     top: -50px;
