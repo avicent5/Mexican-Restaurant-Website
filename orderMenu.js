@@ -19,45 +19,39 @@ const myImage = new Image();
 myImage.src = 'Images/taco_image1.png'; 
 const cardContent = [
     {
-        picture : `<img src="TacoImages/chickenTacoOrderPage.png" 
-        alt="Special Deal 1"
-        style="height: 50%;
-        width: 100%;">`,
-        heading : '<h1 style="text-align: center;">Chicken Taco </h1>',
-        body : '<p style="text-align: center;">Price: $1.99 </p>',
-        button : ` <button class="order_page_button">Add to cart</button>`,
-        text : 'Work?'
+        picture : 'TacoImages/chickenTacoOrderPage.png',
+        heading : 'Chicken Taco',
+        body : 'Price: $1.99 ',
+        button : 'Add to cart',
+        
         
     },
     {
-        picture : `<img src="TacoImages/alPastorTacoOrderPage.png" 
-        alt="Special Deal 1"
-        style="height: 50%;
-        width: 100%;">`,
-        heading : '<h1 style="text-align: center;">Al Pastor Taco </h1>',
-        body : '<p style="text-align: center;">Price: $1.99 </p>',
-        button : ` <button class="order_page_button">Add to cart</button>`
+        picture :"TacoImages/alPastorTacoOrderPage.png",
+        heading : 'Al Pastor Taco',
+        body : 'Price: $1.99',
+        button : `Add to cart`
     },
     {
-        picture : `<img src="TacoImages/beefTacoOrderPage.png" 
-        alt="Special Deal 1"
-        style="height: 50%;
-        width: 100%;">`,
-        heading : '<h1 style="text-align: center;">Beef Taco </h1>',
-        body : '<p style="text-align: center;">Price: $1.99 </p>',
-        button : ` <button class="order_page_button">Add to cart</button>`
+        picture : "TacoImages/beefTacoOrderPage.png",
+        heading : 'Beef Taco',
+        body : 'Price: $1.99',
+        button : `Add to cart`
     },
 ]
 const mexPlateCardContent = [
     {
+        picture : "TacoImages/beefTacoOrderPage.png",
         heading : 'Carne Asada Plate',
         body : 'rice, beans, tortillas'
     },
     {
+        picture : "TacoImages/beefTacoOrderPage.png",
         heading : 'Carne Asada Plate',
         body : 'rice, beans, tortillas'
     },
     {
+        picture : "TacoImages/beefTacoOrderPage.png",
         heading : 'Carne Asada Plate',
         body : 'rice, beans, tortillas'
     },
@@ -70,7 +64,31 @@ let newCardData = `
     <h1>This is box </h1>
     <p>content</p>
 `
+let addToCartDiv = (divPic, divTxt) =>{
+    // might need to create a container div to scroll between lots of items
+   let div = document.createElement("div");
+   let divImage = document.createElement("img");
+   div.style.width = "400px";
+   div.style.height = "125px";
+   div.style.margin = "auto";
+   div.style.marginBottom = "1rem";
+   div.style.marginTop = "1rem"
+   div.style.backgroundColor = "blue";
+   // edit image size
+   div.style.color = "black";
+   div.innerHTML = `
+   <img src= "${divPic}" 
+   alt="Special Deal"
+   style="height: 125px;
+   width: 150px;">
+   <p style="text-align: center;"> ${divTxt} </p>`;
+   
+   document.querySelector('.item').appendChild(div);
+   itemCounter++;
+   document.querySelector('.quantity').innerHTML = itemCounter;
+   
 
+}
 
 // method is easier way to create cards without having to hard code!
 const mexPlateCardContainer = document.querySelector('.mex_plate_card_container');
@@ -82,61 +100,40 @@ const displayContainerMethod = (cardArray, cardClass, cardDID, cardContainer) =>
     cardArray.map( (postCardData) => {
         const newCard = document.createElement("div");
         newCard.classList.add(cardClass);
-        newCard.innerHTML =   `${postCardData.picture} ${postCardData.heading} ${postCardData.body} ${postCardData.button} <p style="text-align: center;"> ${postCardData.text} </p>'`;
+        newCard.innerHTML =   `
+        <img src= "${postCardData.picture}" 
+        alt="Special Deal"
+        style="height: 50%;
+        width: 100%;">
+        <h1 style="text-align: center;">${postCardData.heading}</h1>
+        <p style="text-align: center;"> ${postCardData.body} </p>
+        <button class="order_page_button">${postCardData.button}</button>
+            `;
         cardContainer.appendChild(newCard);
-       //newCard.addEventListener('click', addToCart(cardDID));
+        newCard.addEventListener('click', () => {addToCartDiv(postCardData.picture, postCardData.body)});
         // use .remove to get rid of div thats created from event listener above
     } )
 
 }
 displayContainerMethod(cardContent,'card',1, newCardContainer);
-displayContainerMethod(mexPlateCardContent,'mex_plate_card', 2, mexPlateCardContainer);
+//displayContainerMethod(mexPlateCardContent,'mex_plate_card', 2, mexPlateCardContainer);
 
 
 // add paramater to get picture and add other contents to it
-let addToCartDiv = (id) =>{
-    // might need to create a container div to scroll between lots of items
-   let div = document.createElement("div");
-   let divImage = document.createElement("img");
-   div.style.width = "400px";
-   div.style.height = "125px";
-   div.style.margin = "auto";
-   div.style.marginBottom = "1rem";
-   div.style.marginTop = "1rem"
-   div.style.backgroundColor = "blue";
-   // edit image size
-   divImage.style.height = "20px";
-   divImage.style.width = "50px"
-   
-   div.style.color = "white";
-   switch(id){
-    case 1:
-         div.innerHTML = `   <img src="Images/mexican_plate1.png" 
-    alt="Special Deal 1"
-    style="height: 125px;
-    width: 125px;">`;
-    break;
-    case 2:
-         div.innerHTML = `   <img src="Images/mexicanPlate3.png" 
-    alt="Special Deal 1"
-    style="height: 125px;
-    width: 125px;">`;
-    break;
-   }
-   
-   document.querySelector('.item').appendChild(div);
-   itemCounter++;
-   document.querySelector('.quantity').innerHTML = itemCounter;
 
-}
 // add eventListener here...
-addItemToCart.addEventListener('click', addToCartDiv);
+
 // take in array
 let addToCart = (arr) => {
-    for(let i = 0; i < arr.length; i++){
-    
-    }
+   arr.map( (postAddToCartData) => {
+    const newDiv = document.createElement("div");
+    newDiv.addEventListener('click',  () => {addToCartDiv(postAddToCartData.picture, postAddToCartData.body)});
+
+   })
 }
+addItemToCart.addEventListener("click", () => {addToCartDiv("TacoImages/steakTacoOrderPage.png", 'Steak Taco')});
+
+
 
 // possible solution
 /*
