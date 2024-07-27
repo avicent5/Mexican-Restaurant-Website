@@ -197,7 +197,7 @@ header .shopping span{
     padding: 3px 10px;
 }
 .scroll_div{
-    height: 700px;
+    height: 60%;
     width: 450px;
     background-color: #e8bc08;
     margin: auto;
@@ -248,7 +248,8 @@ header .shopping span{
     left: calc(100% - 50px);
 }
 .active .ordering_page_container{
-    transform: translateX(-200px);
+    /* -200px before*/
+    transform: translateX(-21%);
 }
 .card_container{
     display: flex;

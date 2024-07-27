@@ -64,8 +64,38 @@ let newCardData = `
     <h1>This is box </h1>
     <p>content</p>
 `
-let addToCartDiv = (divPic, divTxt) =>{
+//const?
+let incrementNumOfItems = (function(n) {
+    //<span class="item_counter">1</span>
+    return function(){
+        n += 1;
+        let incrementItem = document.getElementsByClassName("counter");
+        let increment = document.getElementsByClassName("xi");
+        for (let i = 0; i < increment.length; i++){
+            increment[0].innerHTML = 12;
+         increment[1].innerHTML = 10;
+         increment[2].innerHTML = 20;
+         increment[3].innerHTML = 420;
+         increment[4].innerHTML = 69;
+
+    }
+}
+}(1));
+
+let incrementNumOfItem = (id) => {
+     n = n + id;
+    let incrementItem = document.getElementsByClassName("counter");
+    incrementItem[2].innerHTML = 10;
+};
+
+
+let hello = () =>{
+  alert('Hello')
+}
+
+let addToCartDiv = (divPic, divItem ,divTxt) =>{
     // might need to create a container div to scroll between lots of items
+    //let inputID = 1;
    let div = document.createElement("div");
    let divImage = document.createElement("img");
    div.style.width = "400px";
@@ -74,21 +104,28 @@ let addToCartDiv = (divPic, divTxt) =>{
    div.style.marginBottom = "1rem";
    div.style.marginTop = "1rem"
    div.style.backgroundColor = "blue";
-   // edit image size
-   div.style.color = "black";
+   div.style.color = "white";
    div.innerHTML = `
    <img src= "${divPic}" 
    alt="Special Deal"
    style="height: 125px;
-   width: 150px;">
-   <p style="text-align: center;"> ${divTxt} </p>`;
+   width: 150px;
+   float: left;
+   margin-right: 20px;">
+   <h3> ${divItem} </h3>
+   <button> - </button>
+   <span class="counter">1</span>
+   <button class="xi" onclick="incrementNumOfItems()"> + </button>
    
+   <p> ${divTxt} </p>`;
+   //style="text-align: center;"
    document.querySelector('.item').appendChild(div);
    itemCounter++;
+// need to create a function that implements a counter for a button
    document.querySelector('.quantity').innerHTML = itemCounter;
-   
 
 }
+
 
 // method is easier way to create cards without having to hard code!
 const mexPlateCardContainer = document.querySelector('.mex_plate_card_container');
@@ -110,7 +147,7 @@ const displayContainerMethod = (cardArray, cardClass, cardDID, cardContainer) =>
         <button class="order_page_button">${postCardData.button}</button>
             `;
         cardContainer.appendChild(newCard);
-        newCard.addEventListener('click', () => {addToCartDiv(postCardData.picture, postCardData.body)});
+        newCard.addEventListener('click', () => {addToCartDiv(postCardData.picture, postCardData.heading,postCardData.body)});
         // use .remove to get rid of div thats created from event listener above
     } )
 
@@ -131,12 +168,30 @@ let addToCart = (arr) => {
 
    })
 }
-addItemToCart.addEventListener("click", () => {addToCartDiv("TacoImages/steakTacoOrderPage.png", 'Steak Taco')});
+addItemToCart.addEventListener("click", () => {addToCartDiv("TacoImages/steakTacoOrderPage.png", 'Steak Taco', 'Price $1.99')});
 
 
-
+// DEVELOPER NOTES
+//-----------------------------------------
 // possible solution
 /*
 create an matching id and set it to the switch case, if they match then hardcode innerHTML to desired contents
+
+let incrementNumOfItem = () => {
+        var $counter = document.querySelector('.item_counter');
+        $counter.value = parseInt($counter.value) + 1;
+};
+
+let incrementNumOfItem = (function(n) {
+    return function(){
+        n += 1;
+        let count = document.querySelector('.item_counter');
+        for (let i = 0; i < incrementItem.length; i++){
+         incrementItem[i].innerHTML = n;
+    }
+}
+}(1));
+
 */
 // create an array of your desiered contents and hardcode into the scroll div 
+//Might be useful for later : creates a pop up screen => javascript:(() => {alert('hello')})() 
