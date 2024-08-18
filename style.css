@@ -293,6 +293,40 @@ header .shopping span{
     background-color: purple;
     margin: 10px;
 }
+/* menu.html styling starts here */
+.menu_page{
+    background-image: url(Images/MenuBackgroundImg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.menu_contents_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+.menu_content{
+    background-color: white;
+    padding: 10px;
+    height: 600px;
+    width: 600px;
+    margin: 50px;
+    border: solid black 2px;
+}
+.menu_content ul{
+    list-style-type: none;
+    padding: 0px;
+    overflow: hidden;
+
+}
+.menu_content li{
+    font-size: 1.4rem;
+    height: 50px;
+    margin: 15px;
+   border-bottom: 1px solid #453e3b;
+    
+}
 /*  background-color: black;
     position: absolute;
   top: 50%;

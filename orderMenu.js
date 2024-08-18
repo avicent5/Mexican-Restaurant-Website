@@ -2,7 +2,9 @@ let openShoppingCart = document.querySelector('.shopping');
 let closeShoppingCart = document.querySelector('.close_shopping');
 let body = document.querySelector('body');
 let addItemToCart = document.querySelector('.order_page_button');
+let listcard = document.querySelector('.listcard');
 let itemCounter = 0;
+
 // might need to eliminate this later! (add function)
 
 
@@ -71,22 +73,24 @@ let incrementNumOfItems = (function(n) {
         n += 1;
         let incrementItem = document.getElementsByClassName("counter");
         let increment = document.getElementsByClassName("xi");
-        for (let i = 0; i < increment.length; i++){
-            increment[0].innerHTML = 12;
-         increment[1].innerHTML = 10;
-         increment[2].innerHTML = 20;
-         increment[3].innerHTML = 420;
-         increment[4].innerHTML = 69;
+        for (let i = 0; i < incrementItem.length; i++){
+            incrementItem[i].innerHTML = n;
 
     }
 }
 }(1));
 
-let incrementNumOfItem = (id) => {
-     n = n + id;
-    let incrementItem = document.getElementsByClassName("counter");
-    incrementItem[2].innerHTML = 10;
+let incrementNumOfItem = (idName) => {
+    console.log(idName);
+    let incrementItem = document.getElementById(idName);
+        let k = Number(incrementItem.innerHTML) + 1;
+        incrementItem.innerHTML = k;
 };
+
+let decrementNumOfItem = (idName) => {
+    let decrementItem = document.getElementById(idName);
+            decrementItem.innerHTML -= 1;
+}
 
 
 let hello = () =>{
@@ -113,9 +117,9 @@ let addToCartDiv = (divPic, divItem ,divTxt) =>{
    float: left;
    margin-right: 20px;">
    <h3> ${divItem} </h3>
-   <button> - </button>
-   <span class="counter">1</span>
-   <button class="xi" onclick="incrementNumOfItems()"> + </button>
+   <button id="decrease${itemCounter}" onclick="decrementNumOfItem('counter${itemCounter}')"> - </button>
+   <span id="counter${itemCounter}">1</span>
+   <button id="xi${itemCounter}" onclick="incrementNumOfItem('counter${itemCounter}')"> + </button> 
    
    <p> ${divTxt} </p>`;
    //style="text-align: center;"
@@ -125,7 +129,6 @@ let addToCartDiv = (divPic, divItem ,divTxt) =>{
    document.querySelector('.quantity').innerHTML = itemCounter;
 
 }
-
 
 // method is easier way to create cards without having to hard code!
 const mexPlateCardContainer = document.querySelector('.mex_plate_card_container');
@@ -161,12 +164,21 @@ displayContainerMethod(cardContent,'card',1, newCardContainer);
 // add eventListener here...
 
 // take in array
-let addToCart = (arr) => {
-   arr.map( (postAddToCartData) => {
-    const newDiv = document.createElement("div");
-    newDiv.addEventListener('click',  () => {addToCartDiv(postAddToCartData.picture, postAddToCartData.body)});
-
-   })
+function addToCard (key){
+    if(listcard[key] == null){
+        listcard[key] = cardArray[key];
+        listcard[key] = 1;
+    }
+    reloadCard();
+}
+function reloadCard(){
+    listcard.innerHTML = '';
+    let count = 0;
+    let totalPrice = 0;
+    listcard.array.forEach((value, key) => {
+        totalPrice = totalPrice + value.price
+        
+    });
 }
 addItemToCart.addEventListener("click", () => {addToCartDiv("TacoImages/steakTacoOrderPage.png", 'Steak Taco', 'Price $1.99')});
 
@@ -191,7 +203,8 @@ let incrementNumOfItem = (function(n) {
     }
 }
 }(1));
-
+resource below ...
+https://stackoverflow.com/questions/48268411/javascript-html-how-to-implement-a-button-that-adds-a-click-counter-on-click
 */
 // create an array of your desiered contents and hardcode into the scroll div 
 //Might be useful for later : creates a pop up screen => javascript:(() => {alert('hello')})() 
